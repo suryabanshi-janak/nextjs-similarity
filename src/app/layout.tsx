@@ -2,8 +2,9 @@ import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import Providers from '@/components/Providers';
-import SignInButton from '@/components/SignInButton';
+import SignInButton from '@/components/ui/SignInButton';
 import Navbar from '@/components/Navbar';
+import { Toaster } from '@/components/ui/toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,8 @@ export default function RootLayout({
       <body className='min-h-screen antialiased bg-slate-50 dark:bg-slate-900'>
         <Providers>
           {children}
+
+          <Toaster position='bottom-right' />
 
           {/* @ts-expect-error Server Component */}
           <Navbar />

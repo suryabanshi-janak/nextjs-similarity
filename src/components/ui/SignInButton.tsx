@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { signIn } from 'next-auth/react';
 import { Button } from '@/ui/Button';
+import { toast } from '@/ui/toast';
 
 const SignInButton = () => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -12,11 +13,11 @@ const SignInButton = () => {
     try {
       await signIn('google');
     } catch (error) {
-      // toast({
-      //   title: 'Error signing in',
-      //   message: 'Please try again later',
-      //   type: 'error',
-      // });
+      toast({
+        title: 'Error signing in',
+        message: 'Please try again later',
+        type: 'error',
+      });
     }
     setIsLoading(false);
   };
