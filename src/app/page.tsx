@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: 'Free & open-source text similarity API',
 };
 
+const inter = Inter({ subsets: ['latin'] });
+
 export default function Home() {
   return (
     <div className='relative flex items-center justify-center h-screen overflow-x-hidden'>
