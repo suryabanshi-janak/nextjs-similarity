@@ -1,4 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/Tabs';
+import Code from '@/ui/Code';
+import { nodejs, python } from '@/helpers/documentation-code';
 
 const DocumentationTabs = () => {
   return (
@@ -8,8 +10,12 @@ const DocumentationTabs = () => {
         <TabsTrigger value='python'>Python</TabsTrigger>
       </TabsList>
 
-      <TabsContent value='nodejs'></TabsContent>
-      <TabsContent value='python'></TabsContent>
+      <TabsContent value='nodejs'>
+        <Code language='javascript' code={nodejs} show animated />
+      </TabsContent>
+      <TabsContent value='python'>
+        <Code language='python' code={python} show animated />
+      </TabsContent>
     </Tabs>
   );
 };
