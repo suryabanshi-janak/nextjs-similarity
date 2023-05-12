@@ -1,3 +1,7 @@
+'use client';
+
+import SimpleBar from 'simplebar-react';
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/Tabs';
 import Code from '@/ui/Code';
 import { nodejs, python } from '@/helpers/documentation-code';
@@ -11,10 +15,14 @@ const DocumentationTabs = () => {
       </TabsList>
 
       <TabsContent value='nodejs'>
-        <Code language='javascript' code={nodejs} show animated />
+        <SimpleBar>
+          <Code language='javascript' code={nodejs} show animated />
+        </SimpleBar>
       </TabsContent>
       <TabsContent value='python'>
-        <Code language='python' code={python} show animated />
+        <SimpleBar>
+          <Code language='python' code={python} show animated />
+        </SimpleBar>
       </TabsContent>
     </Tabs>
   );

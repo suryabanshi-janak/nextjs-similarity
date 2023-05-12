@@ -1,9 +1,11 @@
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+
 import DocumentationTabs from '@/components/DocumentationTabs';
 import LargeHeading from '@/components/ui/LargeHeading';
 import Paragraph from '@/components/ui/Paragraph';
 
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import 'simplebar-react/dist/simplebar.min.css';
 
 export const metadata: Metadata = {
   title: 'Similarity API | Documentation',
