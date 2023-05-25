@@ -1,11 +1,14 @@
-import { authOptions } from '@/lib/auth';
-import { db } from '@/lib/db';
 import { getServerSession } from 'next-auth';
 import { notFound } from 'next/navigation';
 import { formatDistance } from 'date-fns';
+
+import { db } from '@/lib/db';
+import { authOptions } from '@/lib/auth';
+
 import LargeHeading from './ui/LargeHeading';
 import Paragraph from './ui/Paragraph';
 import { Input } from './ui/Input';
+import Table from './Table';
 
 const ApiDashboard = async () => {
   const user = await getServerSession(authOptions);
@@ -40,6 +43,11 @@ const ApiDashboard = async () => {
         <Paragraph>Your API key:</Paragraph>
         <Input className='truncate w-fit' readOnly value={activeApiKey.key} />
       </div>
+
+      <Paragraph className='my-4 text-center md:text-start'>
+        Your API history:
+      </Paragraph>
+      <Table userRequests={serializableRequests} />
     </div>
   );
 };
