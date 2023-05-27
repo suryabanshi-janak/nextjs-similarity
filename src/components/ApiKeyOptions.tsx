@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 
 import {
@@ -29,7 +29,7 @@ const ApiKeyOptions: React.FC<ApiKeyOptionsProps> = ({ apiKeyKey }) => {
     try {
       await revokeApiKey();
       await createApiKey();
-      router.reload();
+      router.refresh();
     } catch (error) {
       toast({
         title: 'Error creating API key',
@@ -44,14 +44,20 @@ const ApiKeyOptions: React.FC<ApiKeyOptionsProps> = ({ apiKeyKey }) => {
   const revokeCurrentApiKey = async () => {
     setIsRevoking(true);
     try {
-      await revokeApiKey();
-      router.reload();
+      const res = await revokeApiKey();
+      console.log(
+        '🚀 ~ file: ApiKeyOptions.tsx:48 ~ revokeCurrentApiKey ~ res:',
+        res
+      );
+      router.refresh();
     } catch (error) {
       toast({
         title: 'Error revoking API key',
         message: 'Please try again later',
         type: 'error',
       });
+    } finally {
+      setIsRevoking(false);
     }
   };
 
