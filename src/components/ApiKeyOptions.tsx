@@ -44,11 +44,7 @@ const ApiKeyOptions: React.FC<ApiKeyOptionsProps> = ({ apiKeyKey }) => {
   const revokeCurrentApiKey = async () => {
     setIsRevoking(true);
     try {
-      const res = await revokeApiKey();
-      console.log(
-        '🚀 ~ file: ApiKeyOptions.tsx:48 ~ revokeCurrentApiKey ~ res:',
-        res
-      );
+      await revokeApiKey();
       router.refresh();
     } catch (error) {
       toast({
